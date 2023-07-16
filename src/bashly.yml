@@ -13,6 +13,7 @@ commands:
 
   - name: anilist
     alias: al
+    default: force
     args:
       - name: profile
 
