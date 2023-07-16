@@ -1,8 +1,20 @@
 # Default to anime, permit manga
 if [ "${args[--manga]}" = 1 ]; then
+	FORMAT="manga"
 	TYPE="manga"
+	FILTER="format"
+elif [ "${args[--novel]}" = 1 ]; then
+	FORMAT="novel"
+	TYPE="manga"
+	FILTER="format"
+elif [ "${args['--any-manga']}" = 1 ]; then
+	FORMAT="manga"
+	TYPE="manga"
+	FILTER="type"
 else
+	FORMAT="tv"
 	TYPE="anime"
+	FILTER="format"
 fi
 
 TITLE=$(array_to_string "${args[title]}")
@@ -14,7 +26,7 @@ ID=$(curl 'https://graphql.anilist.co/' \
 	--header 'Content-Type: application/json' \
 	--header 'Accept: application/json' \
 	--data "{ \"query\": \"{ Media(search: \\\"${TITLE}\\\", \
-    type: $(echo ${TYPE} | tr '[:lower:]' '[:upper:]')) { id idMal } }\" }")
+    ${FILTER}: $(echo ${FORMAT} | tr '[:lower:]' '[:upper:]')) { id idMal } }\" }")
 
 # Open the anime or manga in AniList by default, permit MyAnimeList
 if [ "${args[--mal]}" = 1 ]; then

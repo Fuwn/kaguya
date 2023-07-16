@@ -35,11 +35,20 @@ commands:
         repeatable: true
 
     flags:
-      - long: --anime
-        conflicts: [--manga]
+      - long: --tv
+        conflicts: [--manga --novel]
 
       - long: --manga
-        conflicts: [--anime]
+        conflicts: [--tv --novel]
+
+      - long: --novel
+        conflicts: [--tv --manga]
+
+      - long: --any-tv
+        conflicts: [--tv --manga --novel --any-manga]
+
+      - long: --any-manga
+        conflicts: [--tv --manga --novel --any-tv]
 
       - long: --al
         conflicts: [--mal]
