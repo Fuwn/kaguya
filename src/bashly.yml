@@ -1,0 +1,51 @@
+name: kaguya
+help: Fuwn's Anime & Manga Utility
+version: 0.1.0
+
+commands:
+  - name: anichart
+    alias: ac
+
+  - name: myanimelist
+    alias: mal
+    args:
+      - name: profile
+
+  - name: anilist
+    alias: al
+    args:
+      - name: profile
+
+  - name: crunchyroll
+    alias: cr
+    args:
+      - name: search
+        repeatable: true
+
+  - name: hidive
+    alias: hd
+    args:
+      - name: search
+        repeatable: true
+
+  - name: x
+    args:
+      - name: title
+        required: true
+        repeatable: true
+
+    flags:
+      - long: --anime
+        conflicts: [--manga]
+
+      - long: --manga
+        conflicts: [--anime]
+
+      - long: --al
+        conflicts: [--mal]
+
+      - long: --mal
+        conflicts: [--al]
+
+      - long: --social
+        short: -s
