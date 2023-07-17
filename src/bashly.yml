@@ -34,6 +34,17 @@ commands:
       - name: search
         repeatable: true
 
+  - name: watch
+    alias: w
+    dependencies: [ani-cli]
+    args:
+      - name: search
+        repeatable: true
+
+    flags:
+      - long: --dub
+        short: -d
+
   - name: x
     dependencies: [xdg-open, curl, echo, tr, jq]
 
