@@ -5,31 +5,38 @@ version: 0.1.0
 commands:
   - name: anichart
     alias: ac
+    dependencies: [xdg-open]
 
   - name: myanimelist
     alias: mal
+    dependencies: [xdg-open]
     args:
       - name: profile
 
   - name: anilist
     alias: al
     default: force
+    dependencies: [xdg-open]
     args:
       - name: profile
 
   - name: crunchyroll
     alias: cr
+    dependencies: [xdg-open]
     args:
       - name: search
         repeatable: true
 
   - name: hidive
     alias: hd
+    dependencies: [xdg-open]
     args:
       - name: search
         repeatable: true
 
   - name: x
+    dependencies: [xdg-open, curl, echo, tr, jq]
+
     args:
       - name: title
         required: true
