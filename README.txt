@@ -12,6 +12,7 @@ Commands:
   crunchyroll   
   hidive        
   watch         
+  character     
   x             
 
 Options:
