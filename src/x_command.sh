@@ -39,6 +39,18 @@ if [[ "${args[--mal]}" = 1 ]]; then
 	else
 		xdg-open https://myanimelist.net/"${TYPE}"/"$(echo "${ID}" | jq '.data.Media.idMal' || true)"
 	fi
+elif [[ "${args[--both]}" = 1 ]]; then
+	if [[ "${args[--social]}" = 1 ]]; then
+		FULL_URL=$(curl --silent \
+			"https://api.jikan.moe/v4/anime/$(echo "${ID}" |
+				jq '.data.Media.idMal')/full" || true)
+
+		xdg-open https://anilist.co/"${TYPE}"/"$(echo "${ID}" | jq '.data.Media.id' || true)"/social
+		xdg-open "$(echo "${FULL_URL}" | jq -r '.data.url' || true)/forum"
+	else
+		xdg-open https://anilist.co/"${TYPE}"/"$(echo "${ID}" | jq '.data.Media.id' || true)"
+		xdg-open https://myanimelist.net/"${TYPE}"/"$(echo "${ID}" | jq '.data.Media.idMal' || true)"
+	fi
 else
 	if [[ "${args[--social]}" = 1 ]]; then
 		xdg-open https://anilist.co/"${TYPE}"/"$(echo "${ID}" | jq '.data.Media.id' || true)"/social

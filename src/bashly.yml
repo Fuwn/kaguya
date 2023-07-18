@@ -75,5 +75,9 @@ commands:
       - long: --mal
         conflicts: [--al]
 
+      - long: --both
+        short: -b
+        conflicts: [--al --mal]
+
       - long: --social
         short: -s
