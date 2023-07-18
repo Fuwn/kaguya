@@ -45,6 +45,15 @@ commands:
       - long: --dub
         short: -d
 
+  - name: character
+    alias: c
+    dependencies: [xdg-open, curl, echo, jq]
+
+    args:
+      - name: name
+        required: true
+        repeatable: true
+
   - name: x
     dependencies: [xdg-open, curl, echo, tr, jq]
 
