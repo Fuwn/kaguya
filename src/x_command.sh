@@ -30,7 +30,15 @@ ID=$(curl 'https://graphql.anilist.co/' \
 
 # Open the anime or manga in AniList by default, permit MyAnimeList
 if [ "${args[--mal]}" = 1 ]; then
-	xdg-open https://myanimelist.net/${TYPE}/"$(echo "${ID}" | jq '.data.Media.idMal')"
+	if [ "${args[--social]}" = 1 ]; then
+		FULL_URL=$(curl --silent \
+			"https://api.jikan.moe/v4/anime/$(echo "${ID}" |
+				jq '.data.Media.idMal')/full")
+
+		xdg-open "$(echo "${FULL_URL}" | jq -r '.data.url')/forum"
+	else
+		xdg-open https://myanimelist.net/${TYPE}/"$(echo "${ID}" | jq '.data.Media.idMal')"
+	fi
 else
 	if [ "${args[--social]}" = 1 ]; then
 		xdg-open https://anilist.co/${TYPE}/"$(echo "${ID}" | jq '.data.Media.id')"/social
