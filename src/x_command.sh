@@ -26,7 +26,8 @@ ID=$(curl 'https://graphql.anilist.co/' \
 	--header 'Content-Type: application/json' \
 	--header 'Accept: application/json' \
 	--data "{ \"query\": \"{ Media(search: \\\"${TITLE}\\\", \
-    ${FILTER}: $(echo "${FORMAT}" | tr '[:lower:]' '[:upper:]' || true)) { id idMal } }\" }")
+    ${FILTER}: $(echo "${FORMAT}" | tr '[:lower:]' '[:upper:]' || true) \
+    sort: [ POPULARITY_DESC ]) { id idMal } }\" }")
 
 # Open the anime or manga in AniList by default, permit MyAnimeList
 if [[ "${args[--mal]}" = 1 ]]; then
