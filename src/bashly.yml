@@ -1,92 +1,86 @@
 name: kaguya
 help: Fuwn's Anime & Manga Utility
 version: 0.1.0
-
 commands:
   - name: anichart
     alias: ac
     dependencies: [xdg-open]
-
   - name: myanimelist
     alias: mal
     dependencies: [xdg-open]
     args:
       - name: profile
-
   - name: anilist
     alias: al
     default: force
     dependencies: [xdg-open]
     args:
       - name: profile
-
   - name: crunchyroll
     alias: cr
     dependencies: [xdg-open]
     args:
       - name: search
         repeatable: true
-
   - name: hidive
     alias: hd
     dependencies: [xdg-open]
     args:
       - name: search
         repeatable: true
-
   - name: watch
     alias: w
     dependencies: [ani-cli]
     args:
       - name: search
         repeatable: true
-
     flags:
       - long: --dub
         short: -d
-
   - name: character
     alias: c
     dependencies: [xdg-open, curl, echo, jq]
-
     args:
       - name: name
         required: true
         repeatable: true
-
+  - name: stream
+    dependencies: [date, yt-dlp, sed, mplayer, rm]
+    args:
+      - name: uri
+        required: true
+    flags:
+      - long: --fix
+      - long: --download
+      - long: --username
+        short: -u
+        arg: username
+      - long: --password
+        short: -p
+        arg: password
   - name: x
     dependencies: [xdg-open, curl, echo, tr, jq]
-
     args:
       - name: title
         required: true
         repeatable: true
-
     flags:
       - long: --tv
         conflicts: [--manga --novel]
-
       - long: --manga
         conflicts: [--tv --novel]
-
       - long: --novel
         conflicts: [--tv --manga]
-
       - long: --any-tv
         conflicts: [--tv --manga --novel --any-manga]
-
       - long: --any-manga
         conflicts: [--tv --manga --novel --any-tv]
-
       - long: --al
         conflicts: [--mal]
-
       - long: --mal
         conflicts: [--al]
-
       - long: --both
         short: -b
         conflicts: [--al --mal]
-
       - long: --social
         short: -s
