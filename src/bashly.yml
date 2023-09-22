@@ -45,7 +45,7 @@ commands:
         required: true
         repeatable: true
   - name: stream
-    dependencies: [date, yt-dlp, sed, mplayer, rm]
+    dependencies: [date, yt-dlp, sed, memento, rm]
     args:
       - name: uri
         required: true

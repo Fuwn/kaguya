@@ -66,8 +66,8 @@ if [ -n "${args['--username']}" ]; then
 	media_command+=(-p "${args['--password']}")
 fi
 
-mplayer \
-	-sub /tmp/skyla_subtitles.*.ass \
+memento \
+	--sub-file="/tmp/skyla_subtitles.en-US.ass" \
 	"$("${media_command[@]}")"
 
 rm /tmp/skyla_subtitles.*.ass
