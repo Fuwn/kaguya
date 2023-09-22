@@ -58,6 +58,10 @@ commands:
       - long: --password
         short: -p
         arg: password
+      - long: --language
+        short: -l
+        arg: language
+        default: en-US
   - name: x
     dependencies: [xdg-open, curl, echo, tr, jq]
     args:

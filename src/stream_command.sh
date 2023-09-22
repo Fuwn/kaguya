@@ -35,7 +35,7 @@ subtitles_command=(
 	'--cookies-from-browser' 'firefox'
 	'--no-download'
 	'-o' '/tmp/skyla_subtitles'
-	'--sub-lang' 'en-US'
+	'--sub-lang' "${args['--language']}"
 	'--write-subs'
 	'--user-agent' "${user_agent}"
 	"${args[uri]}"
@@ -67,7 +67,7 @@ if [ -n "${args['--username']}" ]; then
 fi
 
 memento \
-	--sub-file="/tmp/skyla_subtitles.en-US.ass" \
+	--sub-file="/tmp/skyla_subtitles.${args['--language']}.ass" \
 	"$("${media_command[@]}")"
 
 rm /tmp/skyla_subtitles.*.ass
