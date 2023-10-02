@@ -68,6 +68,7 @@ commands:
         short: -c
         arg: cookies
         conflicts: [--username --password]
+      - long: --aria2c
   - name: x
     dependencies: [xdg-open, curl, echo, tr, jq]
     args:

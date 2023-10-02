@@ -8,9 +8,6 @@ if [[ -n "${args['--download']}" ]]; then
 		"--all-subs"
 		"--cookies-from-browser" "firefox"
 		"--embed-subs"
-		"--external-downloader=aria2c"
-		"--external-downloader-args"
-		'--min-split-size=1M --max-connection-per-server=16 --max-concurrent-downloads=16 --split=16'
 		"-f" 'best[height=1080]'
 		"--remux" "mkv"
 		"--merge" "mkv"
@@ -26,6 +23,12 @@ if [[ -n "${args['--download']}" ]]; then
 
 	if [ -n "${args['--cookies']}" ]; then
 		yt_dlp_command+=(--cookies "${args['--cookies']}")
+	fi
+
+	if [ -n "${args['--aria2c']}" ]; then
+		yt_dlp_command+=('--external-downloader=aria2c')
+		yt_dlp_command+=('--external-downloader-args')
+		yt_dlp_command+=('--min-split-size=1M --max-connection-per-server=16 --max-concurrent-downloads=16 --split=16')
 	fi
 
 	"${yt_dlp_command[@]}"
