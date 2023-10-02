@@ -3,19 +3,32 @@ user_agent="Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20100101 Firefox/10.0
 if [[ -n "${args['--download']}" ]]; then
 	START=$(date +%s)
 
-	yt-dlp \
-		--all-subs \
-		--cookies-from-browser firefox \
-		--embed-subs \
-		--external-downloader=aria2c \
-		--external-downloader-args \
-		'--min-split-size=1M --max-connection-per-server=16 --max-concurrent-downloads=16 --split=16' \
-		-f 'best[height=1080]' \
-		--remux mkv \
-		--merge mkv \
-		--verbose \
-		--user-agent "${user_agent}" \
+	yt_dlp_command=(
+		"yt-dlp"
+		"--all-subs"
+		"--cookies-from-browser" "firefox"
+		"--embed-subs"
+		"--external-downloader=aria2c"
+		"--external-downloader-args"
+		'--min-split-size=1M --max-connection-per-server=16 --max-concurrent-downloads=16 --split=16'
+		"-f" 'best[height=1080]'
+		"--remux" "mkv"
+		"--merge" "mkv"
+		"--verbose"
+		"--user-agent" "${user_agent}"
 		"${args[uri]}"
+	)
+
+	if [ -n "${args['--username']}" ] || [ -n "${args['--password']}" ]; then
+		yt_dlp_command+=(-u "${args['--username']}")
+		yt_dlp_command+=(-p "${args['--password']}")
+	fi
+
+	if [ -n "${args['--cookies']}" ]; then
+		yt_dlp_command+=(--cookies "${args['--cookies']}")
+	fi
+
+	"${yt_dlp_command[@]}"
 
 	printf "\ntook %s seconds\n" $(($(date +%s || true) - START))
 
