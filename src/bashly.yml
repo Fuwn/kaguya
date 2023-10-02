@@ -55,13 +55,19 @@ commands:
       - long: --username
         short: -u
         arg: username
+        conflicts: [--cookies]
       - long: --password
         short: -p
         arg: password
+        conflicts: [--cookies]
       - long: --language
         short: -l
         arg: language
         default: en-US
+      - long: --cookies
+        short: -c
+        arg: cookies
+        conflicts: [--username --password]
   - name: x
     dependencies: [xdg-open, curl, echo, tr, jq]
     args:

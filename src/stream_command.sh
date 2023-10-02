@@ -41,9 +41,13 @@ subtitles_command=(
 	"${args[uri]}"
 )
 
-if [ -n "${args['--username']}" ]; then
+if [ -n "${args['--username']}" ] || [ -n "${args['--password']}" ]; then
 	subtitles_command+=(-u "${args['--username']}")
 	subtitles_command+=(-p "${args['--password']}")
+fi
+
+if [ -n "${args['--cookies']}" ]; then
+	subtitles_command+=(--cookies "${args['--cookies']}")
 fi
 
 "${subtitles_command[@]}"
