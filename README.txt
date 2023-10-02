@@ -6,14 +6,15 @@ Usage:
   kaguya --version | -v
 
 Commands:
-  anichart      
-  myanimelist   
-  anilist        (default)
-  crunchyroll   
-  hidive        
-  watch         
-  character     
-  x             
+  anichart      Open AniChart
+  myanimelist   Open MyAnimeList
+  anilist       Open AniList (default)
+  crunchyroll   Open Crunchyroll
+  hidive        Open HIDIVE
+  watch         Open ani-cli
+  character     Search for a character on AniList
+  stream
+  x             Search for almost anything on AniList
 
 Options:
   --help, -h

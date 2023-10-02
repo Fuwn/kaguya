@@ -5,38 +5,50 @@ commands:
   - name: anichart
     alias: ac
     dependencies: [xdg-open]
+    help: Open AniChart
   - name: myanimelist
     alias: mal
     dependencies: [xdg-open]
     args:
       - name: profile
+        help: Open a MyAnimeList profile
+    help: Open MyAnimeList
   - name: anilist
     alias: al
     default: force
     dependencies: [xdg-open]
     args:
       - name: profile
+        help: Open a AniList profile
+    help: Open AniList
   - name: crunchyroll
     alias: cr
     dependencies: [xdg-open]
     args:
       - name: search
         repeatable: true
+        help: Search within Crunchyroll
+    help: Open Crunchyroll
   - name: hidive
     alias: hd
     dependencies: [xdg-open]
     args:
       - name: search
         repeatable: true
+        help: Search within HIDIVE
+    help: Open HIDIVE
   - name: watch
     alias: w
     dependencies: [ani-cli]
     args:
       - name: search
         repeatable: true
+        help: Search within ani-cli
+    help: Open ani-cli
     flags:
       - long: --dub
         short: -d
+        help: Search for dubbed media only
   - name: character
     alias: c
     dependencies: [xdg-open, curl, echo, jq]
@@ -44,6 +56,7 @@ commands:
       - name: name
         required: true
         repeatable: true
+    help: Search for a character on AniList
   - name: stream
     dependencies: [date, yt-dlp, sed, memento, rm]
     args:
@@ -69,8 +82,10 @@ commands:
         arg: cookies
         conflicts: [--username --password]
       - long: --aria2c
+        help: Use aria2c as your preferred M3U8 downloader
   - name: x
     dependencies: [xdg-open, curl, echo, tr, jq]
+    help: Search for almost anything on AniList
     args:
       - name: title
         required: true
