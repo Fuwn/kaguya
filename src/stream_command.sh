@@ -8,9 +8,7 @@ if [[ -n "${args['--download']}" ]]; then
 		"--all-subs"
 		"--cookies-from-browser" "firefox"
 		"--embed-subs"
-		"-f" 'best[height=1080]'
-		"--remux" "mkv"
-		"--merge" "mkv"
+		'-f' 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio/best'
 		"--verbose"
 		"--user-agent" "${user_agent}"
 		"${args[uri]}"
@@ -37,14 +35,6 @@ if [[ -n "${args['--download']}" ]]; then
 
 	return
 fi
-
-# mpv "$(yt-dlp \
-# 	--cookies-from-browser firefox \
-# 	--extractor-args crunchyrollbeta:hardsub=en-US \
-# 	-f 'best[height=1080]' \
-# 	-g \
-# 	--verbose \
-# 	"${1}")"
 
 subtitles_command=(
 	'yt-dlp'
@@ -75,7 +65,7 @@ fi
 media_command=(
 	'yt-dlp'
 	'--cookies-from-browser' 'firefox'
-	'-f' 'best[height=1080]'
+	'-f' 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio/best'
 	'-g'
 	'--user-agent' "${user_agent}"
 	"${args[uri]}"
