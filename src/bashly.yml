@@ -63,6 +63,9 @@ commands:
       - name: uri
         required: true
     flags:
+      - long: --browser
+        arg: browser
+        default: firefox
       - long: --fix
       - long: --download
       - long: --username
