@@ -15,7 +15,6 @@ commands:
     help: Open MyAnimeList
   - name: anilist
     alias: al
-    default: force
     dependencies: [xdg-open]
     args:
       - name: profile
@@ -58,7 +57,9 @@ commands:
         repeatable: true
     help: Search for a character on AniList
   - name: stream
+    help: yt-dlp wrapper for streaming anime
     dependencies: [date, yt-dlp, sed, memento, rm]
+    default: force
     args:
       - name: uri
         required: true

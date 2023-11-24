@@ -8,12 +8,12 @@ Usage:
 Commands:
   anichart      Open AniChart
   myanimelist   Open MyAnimeList
-  anilist       Open AniList (default)
+  anilist       Open AniList
   crunchyroll   Open Crunchyroll
   hidive        Open HIDIVE
   watch         Open ani-cli
   character     Search for a character on AniList
-  stream
+  stream        yt-dlp wrapper for streaming anime (default)
   x             Search for almost anything on AniList
 
 Options:
