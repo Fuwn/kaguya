@@ -67,6 +67,8 @@ commands:
       - long: --browser
         arg: browser
         default: firefox
+      - long: --user-agent
+        arg: user-agent
       - long: --fix
       - long: --download
       - long: --username
