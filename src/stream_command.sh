@@ -12,6 +12,7 @@ if [[ -n "${args['--download']}" ]]; then
 		--cookies-from-browser "${args[--browser]}" \
 		--all-subs \
 		--embed-subs \
+		--af="scaletempo=stride=28:overlap=.9:search=25" \
 		"${user_agent}" \
 		"${args[uri]}"
 
@@ -23,5 +24,6 @@ fi
 mpv \
 	--ytdl-raw-options-append=format='bestvideo[ext=mp4]+bestaudio[ext=m4a]/best' \
 	--ytdl-raw-options-append=cookies-from-browser="${args[--browser]}" \
+	--af="scaletempo=stride=28:overlap=.9:search=25" \
 	"${user_agent}" \
 	"${args[uri]}"
